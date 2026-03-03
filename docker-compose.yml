@@ -22,11 +22,21 @@ services:
     image: nginx:alpine
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.hello.rule=Host(`mix-dev.pl`) && PathPrefix(`/app`)"
+      - "traefik.http.routers.hello.rule=Host(`mix-dev.pl`)"
       - "traefik.http.routers.hello.entrypoints=websecure"
       - "traefik.http.routers.hello.tls.certresolver=my-resolver"
       - "traefik.http.services.hello-svc.loadbalancer.server.port=80"
       - "traefik.http.routers.hello.service=hello-svc"
+  
+  dick-backend:
+    image: mixon27/mix-dev:dick_backend
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.dick-backend.rule=Host(`dick-api.mix-dev.pl`)"
+      - "traefik.http.routers.dick-backend.entrypoints=websecure"
+      - "traefik.http.routers.dick-backend.tls.certresolver=my-resolver"
+      - "traefik.http.services.dick-backend-svc.loadbalancer.server.port=8080"
+      - "traefik.http.routers.dick-backend.service=dick-backend-svc"
 
 volumes:
   letsencrypt:
