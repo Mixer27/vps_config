@@ -18,7 +18,7 @@ services:
       - "--certificatesresolvers.my-resolver.acme.email=mikikorolczyk@gmail.com"
       - "--certificatesresolvers.my-resolver.acme.storage=/letsencrypt/acme.json"
 
-    app:
+  app:
     image: nginx:alpine
     labels:
       - "traefik.enable=true"
