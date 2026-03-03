@@ -1,0 +1,4 @@
+services:
+  app:
+    image: alpine:latest
+    command: tail -f /dev/null
