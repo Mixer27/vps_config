@@ -22,7 +22,7 @@ services:
     image: nginx:alpine
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.hello.rule=Host(`mix-dev.pl`)"
+      - "traefik.http.routers.hello.rule=Host(`app.mix-dev.pl`)"
       - "traefik.http.routers.hello.entrypoints=websecure"
       - "traefik.http.routers.hello.tls.certresolver=my-resolver"
       - "traefik.http.services.hello-svc.loadbalancer.server.port=80"
