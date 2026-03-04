@@ -1,6 +1,12 @@
 services:
   traefik:
     image: traefik:v3
+      labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.traefik.rule=Host(`traefik.mix-dev.pl`)"
+      - "traefik.http.routers.traefik.entrypoints=websecure"
+      - "traefik.http.routers.traefik.tls.certresolver=my-resolver"
+      - "traefik.http.routers.traefik.service=api@internal"
     ports:
       - "80:80"
       - "443:443"
@@ -17,6 +23,7 @@ services:
       - "--certificatesresolvers.my-resolver.acme.tlschallenge=true"
       - "--certificatesresolvers.my-resolver.acme.email=mikikorolczyk@gmail.com"
       - "--certificatesresolvers.my-resolver.acme.storage=/letsencrypt/acme.json"
+      - "--api.dashboard=true"
 
   app:
     image: nginx:alpine
