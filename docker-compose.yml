@@ -2,11 +2,11 @@ services:
   traefik:
     image: traefik:v3
     labels:
-    - "traefik.enable=true"
-    - "traefik.http.routers.traefik.rule=Host(`traefik.mix-dev.pl`)"
-    - "traefik.http.routers.traefik.entrypoints=websecure"
-    - "traefik.http.routers.traefik.tls.certresolver=my-resolver"
-    - "traefik.http.routers.traefik.service=api@internal"
+      - "traefik.enable=true"
+      - "traefik.http.routers.traefik.rule=Host(`traefik.mix-dev.pl`)"
+      - "traefik.http.routers.traefik.entrypoints=websecure"
+      - "traefik.http.routers.traefik.tls.certresolver=my-resolver"
+      - "traefik.http.routers.traefik.service=api@internal"
     ports:
       - "80:80"
       - "443:443"
